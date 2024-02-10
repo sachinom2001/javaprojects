@@ -7,11 +7,12 @@ import com.xworkz.playstoreapp.hub.SoftwareHub;
 import com.xworkz.playstoreapp.hub.impl.PlayStoreimpl;
 
 public class AppExecutor {
+
     public static void main(String args[]) throws ApplicationNotFoundException, NullPointerException {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter the number of application to be added : ");
         int size=sc.nextInt();
-        SoftwareHub softwareHub=new PlayStoreimpl(size);
+        SoftwareHub softwareHub=new PlayStoreimpl();
 
 
         for (int index = 0; index < size; index++) {

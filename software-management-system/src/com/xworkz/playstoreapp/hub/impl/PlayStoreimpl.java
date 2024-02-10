@@ -4,20 +4,23 @@ import com.xworkz.playstoreapp.application.Application;
 import com.xworkz.playstoreapp.exception.*;
 import com.xworkz.playstoreapp.hub.SoftwareHub;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 //  custom runtime exception
 public class PlayStoreimpl implements SoftwareHub {
 
-    Application application[] ;
+    List<Application> applications = new ArrayList<>();
     int index=0,applicationId=1;
 
     public PlayStoreimpl() {
+
     }
 
-    public PlayStoreimpl(int size){
-        application=new Application[size];
-    }
+//    public PlayStoreimpl(int size){
+//        application=new Application[size];
+//    }
 
     @Override
     public boolean addApplication(Application application) {
@@ -26,7 +29,7 @@ public class PlayStoreimpl implements SoftwareHub {
         try {
             if (application != null) {
                 application.setAppId(applicationId++);
-                this.application[index++] = application;
+                this.applications.add(application);
                 System.out.println("Id for an application is added successfully..!");
                 isAdded = true;
             } else {
@@ -41,27 +44,24 @@ public class PlayStoreimpl implements SoftwareHub {
 
     public boolean getAllApplication() {
         System.out.println("List of Application are: ");
-        for (int index = 0; index < application.length; index++) {
-            System.out.println(application[index].getAppId() + " " + application[index].getAppName() + " " +
-                    application[index].getAppType() + " " + application[index].getAppVersion() + " " +
-                    application[index].getCompanyName() + " " + application[index].getReleaseDate() + " " +
-                    application[index].getSizeinMB());
+        for (Application application:applications){
+            System.out.println(application);
         }
         return true;
     }
 
     public Application getApplicationById(int appId) throws ApplicationNotFoundException{
         System.out.println("started getApplicationById method : ");
-        Application applctaion2 = null;
+        Application applctaion1 = null;
 
 //        try {
             if (appId > 0) {
-                for (int appIndex = 0; appIndex < this.application.length; appIndex++) {
-                    if (application[appIndex].getAppId() == appId) {
-                        applctaion2 = application[appIndex];
+                for (Application application :applications) {
+                    if (application.getAppId() == appId) {
+                        applctaion1 = application;
                     }
                 }
-                if (applctaion2 == null) {
+                if (applctaion1 == null) {
                         ApplicationNotFoundException applicationNotFoundException = new ApplicationNotFoundException("error message : ");
                         throw applicationNotFoundException;
                 }
@@ -74,25 +74,24 @@ public class PlayStoreimpl implements SoftwareHub {
 ////            System.out.println(e);
 //            e.printStackTrace();
 //        }
-        return applctaion2;
+        return applctaion1;
     }
-
 
     public Application getaApplicationByName(String appName) {
         System.out.println("started getApplicationByName method : ");
         Application application1 = null;
 
         try {
-            for (int appIndex = 0; appIndex < this.application.length; appIndex++) {
-                if (application[appIndex].getAppName().equals(appName)) {
-                    application1 = application[appIndex];
+            for (Application application: applications) {
+                if (application.getAppName().equals(appName)) {
+                    application1 = application;
                     System.out.println("Application found.. please collect in the executor : ");
                 }
+            }
 
             if (application1==null){
                 ApplicationNameNotFoundException applicationNameNotFoundException=new ApplicationNameNotFoundException("error message");
                 throw applicationNameNotFoundException;
-              }
             }
         }catch (ApplicationNameNotFoundException e){
             e.printStackTrace();
@@ -105,42 +104,43 @@ public class PlayStoreimpl implements SoftwareHub {
         String applicationName =null;
 
         try {
-            for (int appIndex = 0; appIndex < this.application.length; appIndex++) {
-                if (application[appIndex].getAppType().equals(appType)) {
-                    applicationName = application[appIndex].getAppName();
+            for (Application application:applications) {
+                if (application.getAppType().equals(appType)) {
+                    applicationName = application.getAppName();
                     System.out.println("Application found.. please collect in the executor : ");
                 }
+            }
                 if (applicationName==null){
 //                    ApplicationTypeNotFoundException applicationTypeNotFoundException=new ApplicationTypeNotFoundException("error message");
 //                    throw applicationTypeNotFoundException;
                     throw new ApplicationTypeNotFoundException("message");
                 }
-            }
+
         }catch (ApplicationTypeNotFoundException e){
             e.printStackTrace();
         }
         return applicationName;
     }
+
     public String getApplicationTypeByName(String appName) {
         System.out.println("started getApplicationTypeByName method : ");
         String applicationType = null;
 
         try {
-            for (int appIndex = 0; appIndex < this.application.length; appIndex++) {
-                if (application[appIndex].getAppName().equals(appName)) {
-                    applicationType = application[appIndex].getAppType();
+            for (Application application: applications) {
+                if (application.getAppName().equals(appName)) {
+                    applicationType = application.getAppType();
                     System.out.println("Application found.. please collect in the executor : ");
                 }
-                if (applicationType==null){
-                    ApplicationNameNotFoundException applicationNameNotFoundException=new ApplicationNameNotFoundException("error message :");
-                    throw applicationNameNotFoundException;
-                }
+            }
+            if (applicationType==null){
+                ApplicationNameNotFoundException applicationNameNotFoundException = new ApplicationNameNotFoundException("error message :");
+                throw applicationNameNotFoundException;
             }
         }catch (ApplicationNameNotFoundException e){
             e.printStackTrace();
         }
         return applicationType;
-
     }
 
     public String getApplicationSizeByType(String appType) {
@@ -148,9 +148,9 @@ public class PlayStoreimpl implements SoftwareHub {
         String applicationSize = null;
 
         try {
-            for (int appIndex = 0; appIndex < this.application.length; appIndex++) {
-                if (application[appIndex].getAppType().equals(appType)) {
-                    applicationSize = application[appIndex].getSizeinMB();
+            for (Application application : applications) {
+                if (application.getAppType().equals(appType)) {
+                    applicationSize = application.getSizeinMB();
                     System.out.println("Application found.. please collect in the executor : ");
                 }
             }
@@ -169,9 +169,9 @@ public class PlayStoreimpl implements SoftwareHub {
         double applicationVersion = 0;
 
         try {
-            for (int appindex = 0; appindex < this.application.length; appindex++) {
-                if (application[appindex].getAppType().equals(appType)) {
-                    applicationVersion = application[appindex].getAppVersion();
+            for (Application application:applications) {
+                if (application.getAppType().equals(appType)) {
+                    applicationVersion = application.getAppVersion();
                     System.out.println("Application found...please collect in the executor : ");
                 }
             }
@@ -190,9 +190,9 @@ public class PlayStoreimpl implements SoftwareHub {
         int applicationReleaseDate = 0;
 
         try {
-            for (int appindex = 0; appindex < this.application.length; appindex++) {
-                if (application[appindex].getAppVersion() == appVersion) {
-                    applicationReleaseDate = application[appindex].getReleaseDate();
+            for (Application application:applications) {
+                if (application.getAppVersion() == appVersion) {
+                    applicationReleaseDate = application.getReleaseDate();
                     System.out.println("Application found...please collect in the executor : ");
                 }
             }
@@ -211,9 +211,9 @@ public class PlayStoreimpl implements SoftwareHub {
         boolean isVersionUpdated = false;
 
         try {
-            for (int appindex = 0; appindex < this.application.length; appindex++) {
-                if (application[appindex].getAppName().equals(existingAppName)) {
-                    application[appindex].setAppVersion(updatedAppVersion);
+            for (Application application : applications) {
+                if (application.getAppName().equals(existingAppName)) {
+                    application.setAppVersion(updatedAppVersion);
                     isVersionUpdated = true;
                     System.out.println("Application updated by : ");
                 }
@@ -234,9 +234,9 @@ public class PlayStoreimpl implements SoftwareHub {
         boolean isCompanyNameUpdated = false;
 
         try {
-            for (int appindex = 0; appindex < this.application.length; appindex++) {
-                if (application[appindex].getAppId() == existingAppId) {
-                    application[appindex].setCompanyName(updatedCompanyName);
+            for (Application application : applications) {
+                if (application.getAppId() == existingAppId) {
+                    application.setCompanyName(updatedCompanyName);
                     isCompanyNameUpdated = true;
                     System.out.println("Application updated by : ");
                 }
@@ -254,25 +254,26 @@ public class PlayStoreimpl implements SoftwareHub {
     public void deleteApplicationByAppName(String appName) {
         System.out.println("started Invoked delete application by app name method : ");
 //        Application newapplication[] = new Application[this.application.length - 1];
-        int index, newIndex = 0;
-        boolean isPresent=false;
+//        int index, newIndex = 0;
+        boolean isdeleted=false;
 
         try {
-            if (this.application.length > 0) {
-                for (index = 0, newIndex = 0; index < this.application.length; index++) {
-                    if (!application[index].getAppName().equals(appName)) {
-                        application[newIndex++] = application[index];
-                        isPresent=false;
-                    }
-                    else {
-                        isPresent=true;
-                        break;
+            if (this.applications.size() > 0) {
+                for (Application application : applications) {
+                    if (application.getAppName().equals(appName)) {
+                        applications.remove(application);
+                        isdeleted=true;
                     }
                 }
-                if (isPresent==false){
+                System.out.println(" After delete method  :");
+                for ( Application application:applications ) {
+                    System.out.println(application);
+                }
+                if (isdeleted==false){
                     DeletedApplicationNotFoundException deletedApplicationNotFoundException = new DeletedApplicationNotFoundException("error message :");
                     throw deletedApplicationNotFoundException;
                 }
+
             } else {
                 DeletedApplicationNotFoundException deletedApplicationNotFoundException = new DeletedApplicationNotFoundException("error message :");
                 throw deletedApplicationNotFoundException;
@@ -280,32 +281,9 @@ public class PlayStoreimpl implements SoftwareHub {
         } catch (DeletedApplicationNotFoundException e) {
             e.printStackTrace();
         }
-        application = Arrays.copyOf(application,newIndex);
+//        application = Arrays.copyOf(application,newIndex);
+
     }
-
-
-//        one type
-//        for (int i = 0; i < newapplication.length; i++) {
-//            System.out.println(newapplication[i].getAppId() + " " + newapplication[i].getAppName() + " " +
-//                    application[i].getReleaseDate() + " " + newapplication[i].getAppType() + " " +
-//                    newapplication[i].getAppVersion() + " " + newapplication[i].getSizeinMB() + " " +
-//                    newapplication[i].getCompanyName());
-//        }
-//        System.out.println("Application deleted and get new application : ");
-
-//        another type
-//            application = Arrays.copyOf(application,newIndex);
-//            getAllNewApplication(application);
-
-
-//    private void getAllNewApplication(Application[] application) {
-//        for (int i = 0; i < application.length; i++) {
-//            System.out.println(application[i].getAppId()+" "+application[i].getAppName()+" "+application[i].getAppType()+" "+
-//                    application[i].getReleaseDate()+" "+application[i].getCompanyName()+" "+application[i].getAppVersion()+" "
-//                    +application[i].getSizeinMB());
-//
-//        }
-//    }
 
 
 }

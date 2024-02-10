@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8944f25-5e96-43b5-9036-394512fd417c" name="Changes" comment="" />
+    <list default="true" id="4c30c8cd-5fdb-49a4-b08d-8707ddeef7f6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +26,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectId" id="2WVpf1VVeix5YjHId3JjkrA0ZIB" />
+  <component name="ProjectId" id="2WwmvV8LEH45kgk4LoqQLbpDGEd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -35,24 +35,21 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/IdeaProjects/institute&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/IdeaProjects/e-commerce-company/lib&quot;
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.xworkz.playstoreapp.exception" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HP\IdeaProjects\software-management-system\lib" />
+      <recent name="C:\Users\HP\IdeaProjects\e-commerce-company\lib" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="AppExecutor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.xworkz.playstoreapp.AppExecutor" />
-      <module name="software-management-system" />
+    <configuration name="Executor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.xworkz.platform.Executor" />
+      <module name="e-commerce-company" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.xworkz.playstoreapp.*" />
+          <option name="PATTERN" value="com.xworkz.platform.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -62,18 +59,18 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AppExecutor" />
+        <item itemvalue="Application.Executor" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a8944f25-5e96-43b5-9036-394512fd417c" name="Changes" comment="" />
-      <created>1696827703117</created>
+      <changelist id="4c30c8cd-5fdb-49a4-b08d-8707ddeef7f6" name="Changes" comment="" />
+      <created>1697652249625</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696827703117</updated>
+      <updated>1697652249625</updated>
     </task>
     <servers />
   </component>

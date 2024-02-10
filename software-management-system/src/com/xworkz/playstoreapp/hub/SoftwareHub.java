@@ -7,17 +7,7 @@ import java.util.Arrays;
 
 public interface SoftwareHub {
 
-//    final static int dummy=10;
-
-//    public static void m(){
-////        dummy=20;
-//        System.out.println(dummy);
-//    }
-
-//    1 method
     public boolean addApplication(Application application) ;
-
-//    2 method
     public boolean getAllApplication() ;
 
 //    getApplicationById(int appId)
